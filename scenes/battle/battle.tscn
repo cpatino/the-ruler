@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3d8gnaivmixw"]
+
+[ext_resource type="PackedScene" uid="uid://du4ecmeu8v1y5" path="res://scenes/army/infantry.tscn" id="1_m5il7"]
+[ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_x1t05"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_x1t05")
+character_scene = ExtResource("1_m5il7")

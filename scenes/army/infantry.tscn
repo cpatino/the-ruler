@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://du4ecmeu8v1y5"]
+
+[ext_resource type="Script" path="res://scenes/army/infantry.gd" id="1_pjx7c"]
+[ext_resource type="PackedScene" uid="uid://nyjvxpm81cdj" path="res://scenes/common/movement/axis_square_movement_2d.tscn" id="4_ppgv6"]
+[ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_7kee5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy20o"]
+size = Vector2(21.3333, 26.6667)
+
+[node name="Infantry" type="CharacterBody2D" groups=["characters"]]
+script = ExtResource("1_pjx7c")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+shape = SubResource("RectangleShape2D_cy20o")
+
+[node name="AnimatedSpritePlayer2d" parent="." instance=ExtResource("5_7kee5")]
+
+[node name="AxisSquareMovement2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("4_ppgv6")]
+character = NodePath("..")
+max_movements = 5
