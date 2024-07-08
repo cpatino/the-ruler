@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dmvht53jopa40"]
 
 [ext_resource type="Script" path="res://scenes/army/soldier.gd" id="1_epy3n"]
-[ext_resource type="Texture2D" uid="uid://b27pxmscdx1jf" path="res://assets/base_back2.png" id="2_rlep8"]
-[ext_resource type="Texture2D" uid="uid://j0w04t1emx1c" path="res://assets/base_front2.png" id="3_6no5w"]
-[ext_resource type="Texture2D" uid="uid://f168q6gt0h3y" path="res://assets/base_side2.png" id="4_vtj0v"]
+[ext_resource type="Texture2D" uid="uid://dj1laqafvhn4v" path="res://assets/army/spearman/back.png" id="2_nks8p"]
+[ext_resource type="Texture2D" uid="uid://djxs2lffm66lc" path="res://assets/army/spearman/front.png" id="3_f7a7v"]
+[ext_resource type="Texture2D" uid="uid://cpwwohkt6o0ai" path="res://assets/army/spearman/side.png" id="4_so1p3"]
 [ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_fd4my"]
 [ext_resource type="PackedScene" uid="uid://nyjvxpm81cdj" path="res://scenes/common/movement/axis_square_movement_2d.tscn" id="6_wmnwu"]
 
@@ -14,7 +14,7 @@ size = Vector2(21.3333, 26.6667)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rlep8")
+"texture": ExtResource("2_nks8p")
 }],
 "loop": true,
 "name": &"back",
@@ -22,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_6no5w")
+"texture": ExtResource("3_f7a7v")
 }],
 "loop": true,
 "name": &"front",
@@ -30,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_vtj0v")
+"texture": ExtResource("4_so1p3")
 }],
 "loop": true,
 "name": &"side",
@@ -47,7 +47,7 @@ shape = SubResource("RectangleShape2D_cy20o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i1iu4")
-animation = &"side"
+animation = &"back"
 
 [node name="AnimatedSpritePlayer2d" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("5_fd4my")]
 animated_sprite = NodePath("../AnimatedSprite2D")

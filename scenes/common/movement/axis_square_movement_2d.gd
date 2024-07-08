@@ -39,14 +39,13 @@ func calculate_and_set_new_position(current_position:Vector2, delta:float):
 	set_position_to_character_and_restart(adjusted_position)
 
 func init_vector_direction():
-	if Input.is_action_just_pressed("move_up"):
-		init_from_and_to_positions(Vector2(0, -1))
-	elif Input.is_action_just_pressed("move_down"):
-		init_from_and_to_positions(Vector2(0, 1))
-	elif Input.is_action_just_pressed("move_left"):
-		init_from_and_to_positions(Vector2(-1, 0))
-	elif Input.is_action_just_pressed("move_right"):
-		init_from_and_to_positions(Vector2(1, 0))
+	var input_direction = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	)
+	if input_direction.is_zero_approx():
+		return
+	init_from_and_to_positions(input_direction)
 
 func init_from_and_to_positions(movement_vector:Vector2):
 	to_position = character.position + movement_vector * GRID_SIZE

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oiy7istsgjy5"
-path="res://.godot/imported/base_back.png-e429486ffd2a297837a45da28d1200e7.ctex"
+uid="uid://d2a1is4jqbnah"
+path="res://.godot/imported/path_edge.png-a2cb7984c857fcac5ea6a72e0b77e5dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/base_back.png"
-dest_files=["res://.godot/imported/base_back.png-e429486ffd2a297837a45da28d1200e7.ctex"]
+source_file="res://assets/path_edge.png"
+dest_files=["res://.godot/imported/path_edge.png-a2cb7984c857fcac5ea6a72e0b77e5dc.ctex"]
 
 [params]
 

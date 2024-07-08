@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b27pxmscdx1jf"
-path="res://.godot/imported/base_back2.png-806b0de604fc7d0732a7e2939a80d21e.ctex"
+uid="uid://dkltaehwtehk7"
+path="res://.godot/imported/obstacle_wall_corner.png-a0970e84080d2d420a321b79f35331d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/base_back2.png"
-dest_files=["res://.godot/imported/base_back2.png-806b0de604fc7d0732a7e2939a80d21e.ctex"]
+source_file="res://assets/obstacle_wall_corner.png"
+dest_files=["res://.godot/imported/obstacle_wall_corner.png-a0970e84080d2d420a321b79f35331d2.ctex"]
 
 [params]
 

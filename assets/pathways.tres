@@ -1,0 +1,33 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://nx0gch2ehuk1"]
+
+[ext_resource type="Texture2D" uid="uid://digy3kfr482ai" path="res://assets/path_center.png" id="1_pngxq"]
+[ext_resource type="Texture2D" uid="uid://cwq4lh5w2nvd5" path="res://assets/path_corner_noise_1.png" id="2_fm38r"]
+[ext_resource type="Texture2D" uid="uid://d2a1is4jqbnah" path="res://assets/path_edge.png" id="3_ukxoj"]
+[ext_resource type="Texture2D" uid="uid://bw2n8okenfhxb" path="res://assets/path_edge_noise_1.png" id="4_aut8j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_du02k"]
+texture = ExtResource("1_pngxq")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_saqj8"]
+texture = ExtResource("2_fm38r")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fhlj6"]
+texture = ExtResource("3_ukxoj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ep3xn"]
+texture = ExtResource("4_aut8j")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/4 = SubResource("TileSetAtlasSource_du02k")
+sources/5 = SubResource("TileSetAtlasSource_saqj8")
+sources/6 = SubResource("TileSetAtlasSource_fhlj6")
+sources/7 = SubResource("TileSetAtlasSource_ep3xn")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://du4ecmeu8v1y5"]
 
 [ext_resource type="Script" path="res://scenes/army/soldier.gd" id="1_hwboj"]
-[ext_resource type="Texture2D" uid="uid://oiy7istsgjy5" path="res://assets/base_back.png" id="2_euqv7"]
-[ext_resource type="Texture2D" uid="uid://pj17tkdsrk84" path="res://assets/base_front.png" id="3_k7udv"]
-[ext_resource type="Texture2D" uid="uid://dtwle1c33o1d" path="res://assets/base_side.png" id="4_gkekt"]
+[ext_resource type="Texture2D" uid="uid://oiy7istsgjy5" path="res://assets/army/infantry/back.png" id="2_app7t"]
+[ext_resource type="Texture2D" uid="uid://pj17tkdsrk84" path="res://assets/army/infantry/front.png" id="3_ehrav"]
+[ext_resource type="Texture2D" uid="uid://dtwle1c33o1d" path="res://assets/army/infantry/side.png" id="4_gcxj5"]
 [ext_resource type="PackedScene" uid="uid://nyjvxpm81cdj" path="res://scenes/common/movement/axis_square_movement_2d.tscn" id="4_ppgv6"]
 [ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_7kee5"]
 
@@ -14,7 +14,7 @@ size = Vector2(21.3333, 26.6667)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_euqv7")
+"texture": ExtResource("2_app7t")
 }],
 "loop": true,
 "name": &"back",
@@ -22,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_k7udv")
+"texture": ExtResource("3_ehrav")
 }],
 "loop": true,
 "name": &"front",
@@ -30,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_gkekt")
+"texture": ExtResource("4_gcxj5")
 }],
 "loop": true,
 "name": &"side",
