@@ -4,28 +4,24 @@ extends Node2D
 @export var character_scene: PackedScene
 
 var characters = []
-var animated_sprites = []
+var soldier_scenes = []
 var active_character = null
 
 func _ready():
-	animated_sprites.append(load("res://scenes/army/textures/base_animated_sprite_2d.tscn"))
-	animated_sprites.append(load("res://scenes/army/textures/base_2_animated_sprite_2d.tscn"))
+	soldier_scenes.append(load("res://scenes/army/infantry.tscn"))
 	
-	for i in range(2):
-		var character_instance = character_scene.instantiate()
-		character_instance.position = Vector2(80 * i, 40)
-		character_instance.remove_from_group("army_textures")
-		print("processing battle")
-		var animated_sprite = animated_sprites[i]
-		character_instance.add_child(animated_sprite.instantiate())
-		
-		add_child(character_instance)
+	var infantry = soldier_scenes[0].instantiate()
+	infantry.position = Vector2(100, 40)
+	set_active_character(infantry)
+	add_child(infantry)
+	characters.append(infantry)
 	
-	characters = get_tree().get_nodes_in_group("characters")
-	if characters.size() > 0:
-		for character in characters:
-			character.deactivate()
-		set_active_character(characters[0])
+	soldier_scenes.append(load("res://scenes/army/knight.tscn"))
+	var knight = soldier_scenes[1].instantiate()
+	knight.position = Vector2(180, 40)
+	knight.deactivate()
+	add_child(knight)
+	characters.append(knight)
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):

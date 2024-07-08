@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp222pebf54jm"]
+
+[ext_resource type="Script" path="res://scenes/army/soldier.gd" id="1_so13c"]
+[ext_resource type="Texture2D" uid="uid://b27pxmscdx1jf" path="res://assets/base_back2.png" id="2_db2fl"]
+[ext_resource type="Texture2D" uid="uid://j0w04t1emx1c" path="res://assets/base_front2.png" id="3_eo76q"]
+[ext_resource type="Texture2D" uid="uid://f168q6gt0h3y" path="res://assets/base_side2.png" id="4_58lvd"]
+[ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_tl80x"]
+[ext_resource type="PackedScene" uid="uid://nyjvxpm81cdj" path="res://scenes/common/movement/axis_square_movement_2d.tscn" id="6_1khln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy20o"]
+size = Vector2(21.3333, 26.6667)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1iu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_db2fl")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eo76q")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_58lvd")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
+
+[node name="Knight" type="CharacterBody2D" groups=["characters"]]
+script = ExtResource("1_so13c")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+shape = SubResource("RectangleShape2D_cy20o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i1iu4")
+animation = &"side"
+
+[node name="AnimatedSpritePlayer2d" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("5_tl80x")]
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AxisSquareMovement2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_1khln")]
+character = NodePath("..")
+max_movements = 4

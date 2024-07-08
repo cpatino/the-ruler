@@ -1,21 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://du4ecmeu8v1y5"]
+[gd_scene load_steps=9 format=3 uid="uid://du4ecmeu8v1y5"]
 
-[ext_resource type="Script" path="res://scenes/army/infantry.gd" id="1_pjx7c"]
+[ext_resource type="Script" path="res://scenes/army/soldier.gd" id="1_hwboj"]
+[ext_resource type="Texture2D" uid="uid://oiy7istsgjy5" path="res://assets/base_back.png" id="2_euqv7"]
+[ext_resource type="Texture2D" uid="uid://pj17tkdsrk84" path="res://assets/base_front.png" id="3_k7udv"]
+[ext_resource type="Texture2D" uid="uid://dtwle1c33o1d" path="res://assets/base_side.png" id="4_gkekt"]
 [ext_resource type="PackedScene" uid="uid://nyjvxpm81cdj" path="res://scenes/common/movement/axis_square_movement_2d.tscn" id="4_ppgv6"]
 [ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_7kee5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy20o"]
 size = Vector2(21.3333, 26.6667)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1iu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_euqv7")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k7udv")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gkekt")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
+
 [node name="Infantry" type="CharacterBody2D" groups=["characters"]]
-script = ExtResource("1_pjx7c")
+script = ExtResource("1_hwboj")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.76837e-07, 0)
 shape = SubResource("RectangleShape2D_cy20o")
 
-[node name="AnimatedSpritePlayer2d" parent="." instance=ExtResource("5_7kee5")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i1iu4")
+animation = &"side"
+
+[node name="AnimatedSpritePlayer2d" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("5_7kee5")]
+animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AxisSquareMovement2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("4_ppgv6")]
 character = NodePath("..")
