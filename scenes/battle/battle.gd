@@ -20,6 +20,7 @@ func load_army(soldier_scene:String, soldier_position:Vector2):
 	soldier.set_active(false)
 	get_node("Grid").add_child(soldier)
 	army.append(soldier)
+	soldier.end_turn.connect(_on_end_turn)
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
@@ -29,7 +30,9 @@ func select_next_character():
 	if army.size() > 1:
 		var index = army.find(active_character)
 		index = (index + 1) % army.size()
-		set_active_character(army[index])
+		var character = army[index]
+		if not character.is_turn_ended():
+			set_active_character(character)
 
 func set_active_character(character):
 	if active_character:
@@ -37,3 +40,6 @@ func set_active_character(character):
 	active_character = character
 	active_character.set_active(true)
 	$SoldierCamera2D.character = active_character
+
+func _on_end_turn():
+	select_next_character()
