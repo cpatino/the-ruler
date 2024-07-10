@@ -3,20 +3,25 @@ extends Node2D
 @export var character:CharacterBody2D
 @export var max_movements:int
 const CONSTANT_SPEED = 250
-const GRID_SIZE = Vector2(80, 80)
+const GRID_SIZE = Vector2(40, 40)
 const EPSILON = 0.1
 
-var from_position
-var to_position
+# From which grid is playing trying to start movement
+var from_position:Vector2
+# To which grid is playing trying to start movemenet
+var to_position:Vector2
+# The initial position of the character (remaining movements = max_movements)
+var init_position:Vector2
 
 var remaining_movements:int
 var last_movement_value:int
 
 func _ready():
-	remaining_movements = max_movements
+	init_position = character.position
+	cancel_movement()
 
 func process_movement(delta:float):
-	if not to_position == null and remaining_movements > 0:
+	if to_position.length() > 0 and remaining_movements > 0:
 		move_character(delta)
 	else:
 		init_vector_direction()
@@ -43,17 +48,27 @@ func init_vector_direction():
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
-	if input_direction.is_zero_approx():
-		return
-	init_from_and_to_positions(input_direction)
+	if not input_direction.is_zero_approx():
+		init_from_and_to_positions(input_direction.normalized())
 
 func init_from_and_to_positions(movement_vector:Vector2):
 	to_position = character.position + movement_vector * GRID_SIZE
 	from_position = character.position
+	print("from", from_position)
+	print("to", to_position)
 
 func set_position_to_character_and_restart(new_position:Vector2):
 	character.position = new_position
 	character.move_and_slide()
 	if (new_position == to_position or new_position == from_position):
-		to_position = null
-		from_position = null
+		restart_from_and_to_positions()
+
+func cancel_movement():
+	restart_from_and_to_positions()
+	remaining_movements = max_movements
+	character.position = init_position
+	character.move_and_slide()
+
+func restart_from_and_to_positions():
+	to_position = Vector2(0, 0)
+	from_position = Vector2(0, 0)

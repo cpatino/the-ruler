@@ -1,19 +1,18 @@
 extends CharacterBody2D
 
-var is_active = false
+var active = true
 
 func _ready():
 	$AnimatedSpritePlayer2d.animated_sprite_play_default()
 
 func _physics_process(delta):
-	if is_active:
+	if active:
+		if Input.is_action_pressed("cancel"):
+			$AxisSquareMovement2D.cancel_movement()
+			return
+		
 		$AxisSquareMovement2D.process_movement(delta)
 		$AnimatedSpritePlayer2d.play()
 
-# Función para activar este CharacterBody2D
-func activate():
-	is_active = true
-
-# Función para desactivar este CharacterBody2D
-func deactivate():
-	is_active = false
+func set_active(new_value:bool):
+	active = new_value
