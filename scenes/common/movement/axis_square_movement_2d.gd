@@ -28,20 +28,30 @@ func process_movement(delta:float):
 
 func move_character(delta:float):
 	var current_position = character.position
-	calculate_and_set_new_position(current_position, delta)
+	var new_position = calculate_new_position(current_position, delta)
+	move_and_slide(new_position)
+	# if character is in the same possition (collision), then move it back to the last grid position
 	if (character.position == current_position):
-		set_position_to_character_and_restart(from_position)
-		remaining_movements = last_movement_value
-		print(remaining_movements)
+		move_and_slide(from_position)
 
-func calculate_and_set_new_position(current_position:Vector2, delta:float):
+func calculate_new_position(current_position:Vector2, delta:float):
 	last_movement_value = remaining_movements
 	var new_position = current_position.move_toward(to_position, CONSTANT_SPEED * delta)
-	var adjusted_position = to_position if new_position.distance_to(to_position) < EPSILON else new_position
-	if (adjusted_position == to_position):
+	return to_position if new_position.distance_to(to_position) < EPSILON else new_position
+
+func move_and_slide(new_position:Vector2):
+	calculate_remaining_movements(new_position)
+	character.position = new_position
+	character.move_and_slide()
+	if (new_position == to_position or new_position == from_position):
+		restart_from_and_to_positions()
+
+func calculate_remaining_movements(new_position:Vector2):
+	if (new_position == to_position):
 		remaining_movements -= 1
+	elif (new_position == from_position):
+		remaining_movements = last_movement_value
 	print(remaining_movements)
-	set_position_to_character_and_restart(adjusted_position)
 
 func init_vector_direction():
 	var input_direction = Vector2(
@@ -54,14 +64,6 @@ func init_vector_direction():
 func init_from_and_to_positions(movement_vector:Vector2):
 	to_position = character.position + movement_vector * GRID_SIZE
 	from_position = character.position
-	print("from", from_position)
-	print("to", to_position)
-
-func set_position_to_character_and_restart(new_position:Vector2):
-	character.position = new_position
-	character.move_and_slide()
-	if (new_position == to_position or new_position == from_position):
-		restart_from_and_to_positions()
 
 func cancel_movement():
 	restart_from_and_to_positions()
