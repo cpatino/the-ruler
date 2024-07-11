@@ -1,7 +1,7 @@
 # Script en el nodo principal
 extends Node2D
 
-var army = []
+var army:Array[ArmyCharacterBody2D] = []
 var active_character = null
 
 func _ready():
@@ -27,12 +27,19 @@ func _input(event):
 		select_next_character()
 
 func select_next_character():
-	if army.size() > 1:
-		var index = army.find(active_character)
-		index = (index + 1) % army.size()
-		var character = army[index]
+	print(army.any(remaining_turns))
+	var remaining_army = army.filter(remaining_turns)
+	if remaining_army.size() > 1:
+		var index = remaining_army.find(active_character)
+		index = (index + 1) % remaining_army.size()
+		var character = remaining_army[index]
 		if not character.is_turn_ended():
 			set_active_character(character)
+	else:
+		print("turn ended")
+
+func remaining_turns(character:ArmyCharacterBody2D):
+	return not character.is_turn_ended()
 
 func set_active_character(character):
 	if active_character:
