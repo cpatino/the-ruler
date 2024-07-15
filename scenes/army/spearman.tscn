@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmvht53jopa40"]
+[gd_scene load_steps=11 format=3 uid="uid://dmvht53jopa40"]
 
 [ext_resource type="Script" path="res://scenes/army/soldier.gd" id="1_epy3n"]
 [ext_resource type="Texture2D" uid="uid://dj1laqafvhn4v" path="res://assets/army/spearman/back.png" id="2_nks8p"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_fd4my"]
 [ext_resource type="PackedScene" uid="uid://nyjvxpm81cdj" path="res://scenes/common/movement/axis_square_movement_2d.tscn" id="6_wmnwu"]
 [ext_resource type="PackedScene" uid="uid://c07stqm8ytusy" path="res://scenes/army/army_gui.tscn" id="7_45sxq"]
+[ext_resource type="PackedScene" uid="uid://bauaqc3b7kp3y" path="res://scenes/army/army_state_machine.tscn" id="8_pju4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy20o"]
 size = Vector2(21.3333, 26.6667)
@@ -59,3 +60,5 @@ max_movements = 4
 
 [node name="ArmyGui" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_45sxq")]
 character = NodePath("..")
+
+[node name="ArmyStateMachine" parent="." instance=ExtResource("8_pju4i")]

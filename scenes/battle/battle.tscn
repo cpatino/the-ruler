@@ -207,3 +207,18 @@ limit_bottom = 1080
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("8_8i6gb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control/CenterContainer"]
+layout_mode = 2
+text = "Termino el turno"

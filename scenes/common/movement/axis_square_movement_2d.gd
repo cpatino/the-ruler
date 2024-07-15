@@ -1,4 +1,5 @@
 extends Node2D
+class_name AxisSquareMovement2D
 
 @export var character:CharacterBody2D
 @export var max_movements:int
@@ -17,8 +18,7 @@ var remaining_movements:int
 var last_movement_value:int
 
 func _ready():
-	init_position = character.position
-	cancel_movement()
+	restart_remaining_movements()
 
 func process_movement(delta:float):
 	if to_position.length() > 0 and remaining_movements > 0:
@@ -74,3 +74,7 @@ func cancel_movement():
 func restart_from_and_to_positions():
 	to_position = Vector2(0, 0)
 	from_position = Vector2(0, 0)
+
+func restart_remaining_movements():
+	init_position = character.position
+	cancel_movement()
