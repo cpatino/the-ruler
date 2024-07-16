@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5rops12g2epa"]
+
+[ext_resource type="Texture2D" uid="uid://dl0o7s3x5wll2" path="res://assets/army/cavalry/back.png" id="1_j77g7"]
+[ext_resource type="Texture2D" uid="uid://bg8lrkdyg1sle" path="res://assets/army/cavalry/front.png" id="2_4o0hp"]
+[ext_resource type="Texture2D" uid="uid://c4dus4c346nmx" path="res://assets/army/cavalry/side.png" id="3_sgnws"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjsda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j77g7")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4o0hp")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sgnws")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fjsda")
+animation = &"back"

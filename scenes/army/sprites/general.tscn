@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://7gytyivctubx"]
+
+[ext_resource type="Texture2D" uid="uid://0biowp3srfp3" path="res://assets/army/general/back.png" id="1_4v2s0"]
+[ext_resource type="Texture2D" uid="uid://ddk81nywdsatf" path="res://assets/army/general/front.png" id="2_vaxqe"]
+[ext_resource type="Texture2D" uid="uid://drg0opijlbdoc" path="res://assets/army/general/side.png" id="3_7v8vv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjsda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4v2s0")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vaxqe")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7v8vv")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fjsda")
+animation = &"side"

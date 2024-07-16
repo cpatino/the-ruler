@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwaehcld8npbp"]
+
+[ext_resource type="Texture2D" uid="uid://dj1laqafvhn4v" path="res://assets/army/spearman/back.png" id="1_gduk8"]
+[ext_resource type="Texture2D" uid="uid://djxs2lffm66lc" path="res://assets/army/spearman/front.png" id="2_r05il"]
+[ext_resource type="Texture2D" uid="uid://cpwwohkt6o0ai" path="res://assets/army/spearman/side.png" id="3_bifd3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjsda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gduk8")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r05il")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bifd3")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fjsda")
+animation = &"side"

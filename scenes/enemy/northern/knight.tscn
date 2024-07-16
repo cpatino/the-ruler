@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0jfh0jxedxwc"]
+
+[ext_resource type="Texture2D" uid="uid://b27pxmscdx1jf" path="res://assets/army/knight/back.png" id="1_8ma1p"]
+[ext_resource type="Texture2D" uid="uid://j0w04t1emx1c" path="res://assets/army/knight/front.png" id="2_p0757"]
+[ext_resource type="Texture2D" uid="uid://f168q6gt0h3y" path="res://assets/army/knight/side.png" id="3_5u0p4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgwmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8ma1p")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p0757")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5u0p4")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rgwmt")
+animation = &"front"
