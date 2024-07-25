@@ -1,5 +1,5 @@
+extends Area2D
 class_name ArmyCharacterBody2D
-extends CharacterBody2D
 
 signal end_turn
 
@@ -45,17 +45,17 @@ func can_execute_action():
 func restart():
 	defending = false
 	waiting = false
-	get_axis_movement().restart_remaining_movements()
+	get_grid_movement().restart_remaining_movements()
 	get_guid().set_all_disable(false)
 
 func set_state(new_state:String):
 	state_machine.change_state(new_state, self)
 
-func get_axis_movement() -> AxisSquareMovement2D:
-	return $AxisSquareMovement2D
+func get_grid_movement() -> GridMovement2D:
+	return $GridMovement
 
 func get_guid() -> ArmyGuid:
 	return $ArmyGui
 
 func get_sprite_player() -> AnimatedSpritePlayer2D:
-	return sprite_player
+	return $AnimatedSpritePlayer2d

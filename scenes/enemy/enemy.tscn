@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://n0eab2wrb5n8"]
+[gd_scene load_steps=4 format=3 uid="uid://n0eab2wrb5n8"]
+
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_f4g85"]
+[ext_resource type="PackedScene" uid="uid://26sg3y1mcx2k" path="res://scenes/common/movement/grid_movement.tscn" id="2_yw45t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbrgw"]
 
 [node name="Enemy" type="Area2D"]
+script = ExtResource("1_f4g85")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lbrgw")
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("area_to_move") instance=ExtResource("2_yw45t")]
+area_to_move = NodePath("..")
+ai = true

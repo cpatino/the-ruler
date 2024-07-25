@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scenes/army/soldier.gd" id="1_g2x0v"]
 [ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_msa2h"]
-[ext_resource type="PackedScene" uid="uid://nyjvxpm81cdj" path="res://scenes/common/movement/axis_square_movement_2d.tscn" id="6_jbepj"]
+[ext_resource type="PackedScene" uid="uid://26sg3y1mcx2k" path="res://scenes/common/movement/grid_movement.tscn" id="5_u2ref"]
 [ext_resource type="PackedScene" uid="uid://c07stqm8ytusy" path="res://scenes/army/army_gui.tscn" id="7_w2o4c"]
 [ext_resource type="PackedScene" uid="uid://bauaqc3b7kp3y" path="res://scenes/army/army_state_machine.tscn" id="8_1giv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy20o"]
 size = Vector2(21.3333, 26.6667)
 
-[node name="Soldier" type="CharacterBody2D" groups=["characters"]]
+[node name="Soldier" type="Area2D" groups=["characters"]]
 script = ExtResource("1_g2x0v")
 metadata/_edit_group_ = true
 
@@ -17,12 +17,10 @@ metadata/_edit_group_ = true
 position = Vector2(-4.76837e-07, 0)
 shape = SubResource("RectangleShape2D_cy20o")
 
-[node name="AnimatedSpritePlayer2d" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("5_msa2h")]
-animated_sprite = NodePath("")
+[node name="AnimatedSpritePlayer2d" parent="." instance=ExtResource("5_msa2h")]
 
-[node name="AxisSquareMovement2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_jbepj")]
-character = NodePath("..")
-max_movements = 3
+[node name="GridMovement" parent="." node_paths=PackedStringArray("area_to_move") instance=ExtResource("5_u2ref")]
+area_to_move = NodePath("..")
 
 [node name="ArmyGui" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_w2o4c")]
 character = NodePath("..")

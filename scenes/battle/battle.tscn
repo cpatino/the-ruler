@@ -221,4 +221,4 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control/CenterContainer"]
 layout_mode = 2
-text = "Termino el turno"
+text = "Turno 1 de 20"

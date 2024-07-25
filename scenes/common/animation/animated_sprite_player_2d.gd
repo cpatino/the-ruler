@@ -1,7 +1,7 @@
 class_name AnimatedSpritePlayer2D
 extends Node2D
 
-@export var animated_sprite:AnimatedSprite2D
+@export var animated_sprite: AnimatedSprite2D
 const ANIMATION_FRONT = "front"
 const ANIMATION_BACK = "back"
 const ANIMATION_SIDE = "side"

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://nyjvxpm81cdj"]
-
-[ext_resource type="Script" path="res://scenes/common/movement/axis_square_movement_2d.gd" id="1_h71gf"]
-
-[node name="AxisSquareMovement2D" type="Node2D"]
-script = ExtResource("1_h71gf")
