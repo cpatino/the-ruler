@@ -11,7 +11,7 @@ var defending: bool = false
 var waiting: bool = false
 
 func _ready():
-	state_machine.change_state(State.IDLE, self)
+	state_machine.change_state(ArmyState.IDLE, self)
 	sprite_player.animated_sprite_play_default()
 
 func set_active(new_value: bool):

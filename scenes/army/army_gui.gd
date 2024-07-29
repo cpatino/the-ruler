@@ -4,16 +4,16 @@ class_name ArmyGuid
 @export var character:ArmyCharacterBody2D
 
 func _on_move_button_pressed():
-	set_state(State.WALKING)
+	set_state(ArmyState.WALKING)
 
 func _on_attack_button_pressed():
-	set_state(State.ATTACKING)
+	set_state(ArmyState.ATTACKING)
 
 func _on_defend_button_pressed():
-	set_state(State.DEFENDING)
+	set_state(ArmyState.DEFENDING)
 
 func _on_end_turn_button_pressed():
-	set_state(State.WAITING)
+	set_state(ArmyState.WAITING)
 
 func set_state(new_state:String):
 	hide()

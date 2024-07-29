@@ -12,6 +12,9 @@ var remaining_movements: int = 0
 
 var tween: Tween
 var from_position: Vector2 = Vector2.INF
+var init_position: Vector2 = Vector2.INF
+
+var ai_direction: Vector2 = Vector2.INF
 
 func _ready():
 	restart_remaining_movements()
@@ -19,13 +22,16 @@ func _ready():
 	area_to_move.connect("area_entered", _on_area_entered)
 
 func _on_area_entered(_area: Area2D):
+	print("on area entered")
 	restart_position()
 
 func _on_body_entered(_body: Node2D):
+	print("on body entered")
 	restart_position()
 
 func restart_position():
-	tween.stop()
+	if tween:
+		tween.stop()
 	tween_property_position(from_position, 0)
 	remaining_movements += 1
 
@@ -35,7 +41,7 @@ func move():
 		var direction = get_direction() * GRID_SIZE
 		if Vector2.ZERO != direction:
 			from_position = area_to_move.position
-			tween_property_position(from_position + direction, 1)
+			tween_property_position(from_position + direction, 0.5)
 			remaining_movements -= 1
 
 func can_move():
@@ -49,11 +55,11 @@ func get_direction_from_input():
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up"))
 
 func get_direction_for_ia():
-	return Vector2(0, 1)
+	return ai_direction
 
 func tween_property_position(new_position: Vector2, duration: float):
 	tween_started = true
-	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT_IN)
 	tween.tween_property(area_to_move, "position", new_position, duration)
 	tween.connect("finished", _on_tween_finished)
 
@@ -62,3 +68,14 @@ func _on_tween_finished():
 
 func restart_remaining_movements():
 	remaining_movements = max_movements
+
+func set_init_position():
+	init_position = area_to_move.position
+	from_position = area_to_move.position
+
+func cancel_movement():
+	if not init_position == Vector2.INF:
+		tween.stop()
+		tween_property_position(init_position, 0)
+		from_position = init_position
+		restart_remaining_movements()

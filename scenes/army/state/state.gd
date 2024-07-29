@@ -1,5 +1,5 @@
 extends Node
-class_name State
+class_name ArmyState
 
 const IDLE = "IDLE"
 const WALKING = "WALKING"

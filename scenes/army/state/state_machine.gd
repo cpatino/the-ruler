@@ -1,17 +1,17 @@
 extends Node
 class_name ArmyStateMachine
 
-var current_state: State = null
+var current_state: ArmyState = null
 var states = {}
 
 var current_character: ArmyCharacterBody2D = null
 
 func _ready():
-	preload_state(State.ATTACKING, "res://states/army/attacking_state.gd")
-	preload_state(State.DEFENDING, "res://states/army/defending_state.gd")
-	preload_state(State.IDLE, "res://states/army/idle_state.gd")
-	preload_state(State.WAITING, "res://states/army/waiting_state.gd")
-	preload_state(State.WALKING, "res://states/army/walking_state.gd")
+	preload_state(ArmyState.ATTACKING, "res://scenes/army/state/attacking_state.gd")
+	preload_state(ArmyState.DEFENDING, "res://scenes/army/state/defending_state.gd")
+	preload_state(ArmyState.IDLE, "res://scenes/army/state/idle_state.gd")
+	preload_state(ArmyState.WAITING, "res://scenes/army/state/waiting_state.gd")
+	preload_state(ArmyState.WALKING, "res://scenes/army/state/walking_state.gd")
 
 func preload_state(state_name: String, resource_path: String):
 	states[state_name] = load(resource_path).new()
@@ -30,5 +30,5 @@ func change_state(new_state_name: String, new_character: ArmyCharacterBody2D):
 		current_character = new_character
 
 func _on_exit_state():
-	change_state(State.IDLE, current_character)
+	change_state(ArmyState.IDLE, current_character)
 	current_character.get_guid().set_visibility(true)

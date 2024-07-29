@@ -1,13 +1,13 @@
-extends State
+extends ArmyState
 
 func enter(_current_character: ArmyCharacterBody2D):
-	print("Entering Defending State")
+	print("Entering Waiting State")
 
 func exit(_current_character: ArmyCharacterBody2D):
-	print("Exiting Defending State")
+	print("Exiting Waiting State")
 
 func update(current_character: ArmyCharacterBody2D, _delta):
-	print("Defend")
+	print("Waiting")
 	exit_state.emit()
-	current_character.start_defending()
+	current_character.start_waiting()
 	current_character.get_guid().set_all_disable(true)

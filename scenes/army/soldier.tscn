@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ctamgkhhko1" path="res://scenes/common/animation/animated_sprite_player_2d.tscn" id="5_msa2h"]
 [ext_resource type="PackedScene" uid="uid://26sg3y1mcx2k" path="res://scenes/common/movement/grid_movement.tscn" id="5_u2ref"]
 [ext_resource type="PackedScene" uid="uid://c07stqm8ytusy" path="res://scenes/army/army_gui.tscn" id="7_w2o4c"]
-[ext_resource type="PackedScene" uid="uid://bauaqc3b7kp3y" path="res://scenes/army/army_state_machine.tscn" id="8_1giv8"]
+[ext_resource type="PackedScene" uid="uid://bauaqc3b7kp3y" path="res://scenes/army/state/state_machine.tscn" id="8_1giv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy20o"]
 size = Vector2(21.3333, 26.6667)

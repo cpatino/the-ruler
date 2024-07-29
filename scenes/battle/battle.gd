@@ -17,14 +17,14 @@ var current_turn: int = 0
 
 func _ready():
 	load_army("res://scenes/army/sprites/archer.tscn", Vector2(100, 40), 3)
-	#load_army("res://scenes/army/sprites/cavalry.tscn", Vector2(140, 40), 7)
-	#load_army("res://scenes/army/sprites/general.tscn", Vector2(180, 40), 5)
-	#load_army("res://scenes/army/sprites/infantry.tscn", Vector2(220, 40), 4)
-	#load_army("res://scenes/army/sprites/knight.tscn", Vector2(260, 40), 4)
-	#load_army("res://scenes/army/sprites/spearman.tscn", Vector2(300, 40), 4)
+	load_army("res://scenes/army/sprites/cavalry.tscn", Vector2(140, 40), 7)
+	load_army("res://scenes/army/sprites/general.tscn", Vector2(180, 40), 5)
+	load_army("res://scenes/army/sprites/infantry.tscn", Vector2(220, 40), 4)
+	load_army("res://scenes/army/sprites/knight.tscn", Vector2(260, 40), 4)
+	load_army("res://scenes/army/sprites/spearman.tscn", Vector2(300, 40), 4)
 	
 	set_active_character(army[0])
-	load_enemy("res://scenes/enemy/northern/knight.tscn", Vector2(100, 320), 3)
+	load_enemy("res://scenes/enemy/northern/knight.tscn", Vector2(300, 320), 4)
 	update_turn_control()
 
 func load_army(sprite_scene: String, soldier_position: Vector2, max_movements: int):
@@ -39,7 +39,7 @@ func load_army(sprite_scene: String, soldier_position: Vector2, max_movements: i
 	soldier.get_sprite_player().animated_sprite = sprite
 	soldier.get_grid_movement().max_movements = max_movements
 	
-	get_node("Grid").add_child(soldier)
+	get_node("NavigationRegion2D/Grid").add_child(soldier)
 	army.append(soldier)
 	soldier.end_turn.connect(_on_end_turn)
 
@@ -51,29 +51,29 @@ func load_enemy(sprite_scene: String, init_position: Vector2, max_movements: int
 	enemy_soldier.add_child(sprite)
 	enemy_soldier.get_grid_movement().max_movements = max_movements
 	
-	get_node("Grid").add_child(enemy_soldier)
+	get_node("NavigationRegion2D/Grid").add_child(enemy_soldier)
 	enemy_array.append(enemy_soldier)
+	enemy_soldier.enemy_end_turn.connect(_on_enemy_end_turn)
 
 func _process(delta):
 	if current_turn <= max_turns:
 		if not player_turn:
-			update_turn_control()
 			enemy_array.all(func(enemy):
 				return enemy_turn(enemy, delta))
-			army.all(restart)
-			set_active_character(army[0])
-			player_turn = true
 	else:
 		$Control/CenterContainer/Label.set_text("Termino la batalla")
 		turn_control.show()
 
-func restart(character: ArmyCharacterBody2D):
+func restart_character(character: ArmyCharacterBody2D):
 	character.restart()
 	return true
 
+func restart_enemy(enemy: EnemyArea2D):
+	enemy.restart()
+	return true
+
 func enemy_turn(enemy_soldier: EnemyArea2D, _delta):
-	enemy_soldier.waiting = false
-	enemy_soldier.get_grid_movement().move()
+	enemy_soldier.set_state(EnemyState.WALKING, army)
 	return true
 
 func _input(event):
@@ -92,6 +92,7 @@ func select_next_character():
 	else:
 		player_turn = false
 		update_turn_control()
+		enemy_array.all(restart_enemy)
 
 func remaining_turns(character: ArmyCharacterBody2D):
 	return not character.is_in_waiting()
@@ -110,3 +111,9 @@ func update_turn_control():
 
 func _on_end_turn():
 	select_next_character()
+
+func _on_enemy_end_turn():
+	update_turn_control()
+	army.all(restart_character)
+	set_active_character(army[0])
+	player_turn = true

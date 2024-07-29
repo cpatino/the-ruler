@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://o8w0w07petyl"]
-
-[ext_resource type="Script" path="res://scenes/common/movement/enemy_axis_square_movement_2d.gd" id="1_iryx8"]
-
-[node name="EnemyAxisSquareMovement2D" type="Node2D"]
-script = ExtResource("1_iryx8")

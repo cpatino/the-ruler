@@ -1,4 +1,4 @@
-extends State
+extends ArmyState
 
 func enter(_current_character: ArmyCharacterBody2D):
 	print("Entering Idle State")
