@@ -1,8 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://kbxiek4vxe4k"]
+[gd_scene load_steps=11 format=3 uid="uid://kbxiek4vxe4k"]
 
 [ext_resource type="Texture2D" uid="uid://oiy7istsgjy5" path="res://assets/army/infantry/back.png" id="1_is7et"]
-[ext_resource type="Texture2D" uid="uid://pj17tkdsrk84" path="res://assets/army/infantry/front.png" id="2_abqmm"]
+[ext_resource type="Texture2D" uid="uid://c2yiwpd571s81" path="res://assets/textures/lion/lion_front.png" id="2_dicx8"]
+[ext_resource type="Texture2D" uid="uid://jir7bgi1yni0" path="res://assets/textures/lion/lion_idle.png" id="3_eji4s"]
 [ext_resource type="Texture2D" uid="uid://dtwle1c33o1d" path="res://assets/army/infantry/side.png" id="3_lqcnr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps3jg"]
+atlas = ExtResource("2_dicx8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_covxw"]
+atlas = ExtResource("2_dicx8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73pab"]
+atlas = ExtResource("2_dicx8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkhga"]
+atlas = ExtResource("3_eji4s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ttvv"]
+atlas = ExtResource("3_eji4s")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjsda"]
 animations = [{
@@ -16,11 +37,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_abqmm")
+"texture": SubResource("AtlasTexture_ps3jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_covxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73pab")
 }],
 "loop": true,
 "name": &"front",
-"speed": 5.0
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkhga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ttvv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -33,4 +71,5 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_fjsda")
-animation = &"side"
+animation = &"idle"
+frame_progress = 0.802578

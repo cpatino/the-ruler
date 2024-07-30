@@ -11,7 +11,6 @@ size = Vector2(21.3333, 26.6667)
 
 [node name="Soldier" type="Area2D" groups=["characters"]]
 script = ExtResource("1_g2x0v")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.76837e-07, 0)
@@ -23,6 +22,17 @@ shape = SubResource("RectangleShape2D_cy20o")
 area_to_move = NodePath("..")
 
 [node name="ArmyGui" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_w2o4c")]
+z_index = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 48.0
+offset_right = 56.0
+offset_bottom = 48.0
+grow_horizontal = 0
+grow_vertical = 2
 character = NodePath("..")
 
 [node name="ArmyStateMachine" parent="." instance=ExtResource("8_1giv8")]

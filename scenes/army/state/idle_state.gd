@@ -1,7 +1,7 @@
 extends ArmyState
 
-func enter(_current_character: ArmyCharacterBody2D):
-	print("Entering Idle State")
+func enter(current_character: ArmyCharacterBody2D):
+	current_character.get_sprite_player().animated_sprite_play_default()
 
 func exit(_current_character: ArmyCharacterBody2D):
 	print("Exiting Idle State")

@@ -1,7 +1,7 @@
 # Script en el nodo principal
 extends Node2D
 
-@onready var turn_control: Control = $Control
+@onready var turn_control: Control = $CanvasLayer/Control
 
 const SOLDIER_SCENE: String = "res://scenes/army/soldier.tscn"
 const ENEMY_SCENE: String = "res://scenes/enemy/enemy.tscn"
@@ -106,7 +106,7 @@ func set_active_character(character: ArmyCharacterBody2D):
 
 func update_turn_control():
 	current_turn += 1
-	$Control/CenterContainer/Label.set_text("Turno " + str(current_turn) + " de 20")
+	$CanvasLayer/Control/CenterContainer/Label.set_text("Turno " + str(current_turn) + " de 20")
 	turn_control.show()
 
 func _on_end_turn():

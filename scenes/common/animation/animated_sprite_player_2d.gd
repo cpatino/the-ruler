@@ -5,6 +5,7 @@ extends Node2D
 const ANIMATION_FRONT = "front"
 const ANIMATION_BACK = "back"
 const ANIMATION_SIDE = "side"
+const ANIMATION_IDLE = "idle"
 
 func play():
 	if Input.is_action_just_pressed("move_up"):
@@ -19,7 +20,7 @@ func play():
 		flip_h(false)
 
 func animated_sprite_play_default():
-	animated_sprite_play(ANIMATION_FRONT)
+	animated_sprite_play(ANIMATION_IDLE)
 
 func animated_sprite_play(animation):
 	animated_sprite.play(animation)

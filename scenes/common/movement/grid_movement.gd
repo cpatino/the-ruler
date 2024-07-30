@@ -41,8 +41,10 @@ func move():
 		var direction = get_direction() * GRID_SIZE
 		if Vector2.ZERO != direction:
 			from_position = area_to_move.position
-			tween_property_position(from_position + direction, 0.5)
-			remaining_movements -= 1
+			var new_position = from_position + direction
+			if new_position >= Vector2.ZERO and new_position <= get_viewport_rect().size:
+				tween_property_position(new_position, 0.5)
+				remaining_movements -= 1
 
 func can_move():
 	return not tween_started && remaining_movements > 0
@@ -51,8 +53,8 @@ func get_direction():
 	return get_direction_for_ia() if ai else get_direction_from_input()
 
 func get_direction_from_input():
-	return Vector2(Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up"))
+	return Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up"))
 
 func get_direction_for_ia():
 	return ai_direction

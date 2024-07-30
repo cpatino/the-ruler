@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3d8gnaivmixw"]
+[gd_scene load_steps=8 format=3 uid="uid://d3d8gnaivmixw"]
 
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_x1t05"]
-[ext_resource type="TileSet" uid="uid://djx2kjaebimgo" path="res://assets/ground_tileset.tres" id="2_qs1ds"]
 [ext_resource type="TileSet" uid="uid://dts7ebs5kxmik" path="res://assets/grid_tileset.tres" id="3_h7pok"]
 [ext_resource type="TileSet" uid="uid://nx0gch2ehuk1" path="res://assets/pathways.tres" id="4_frokr"]
-[ext_resource type="Texture2D" uid="uid://dy3x5v8hhs2lx" path="res://assets/obstacle_corner.png" id="5_qujhc"]
-[ext_resource type="Texture2D" uid="uid://dbdhdgkpy8kme" path="res://assets/obstacle_edge.png" id="6_nluxb"]
 [ext_resource type="Texture2D" uid="uid://cx335k4xg8q4o" path="res://assets/ground_grass.png" id="7_o4esy"]
 [ext_resource type="Script" path="res://scenes/battle/camera.gd" id="8_8i6gb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_crk78"]
+font_size = 30
+font_color = Color(0.248969, 0.155239, 0.697698, 1)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hl4qd"]
 outlines = Array[PackedVector2Array]([PackedVector2Array(8.00002, 8, 208, 8, 1136, 8, 1144, 624, 8.00002, 624)])
@@ -16,189 +17,51 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_x1t05")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -1000
+texture_repeat = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("7_o4esy")
+stretch_mode = 1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer"]
+layout_mode = 2
+text = "Turno 1 de 20"
+label_settings = SubResource("LabelSettings_crk78")
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_hl4qd")
-
-[node name="Ground" type="TileMap" parent="NavigationRegion2D"]
-position = Vector2(0, 25)
-tile_set = ExtResource("2_qs1ds")
-format = 2
 
 [node name="Pathway" type="TileMap" parent="NavigationRegion2D"]
 position = Vector2(0, 25)
 tile_set = ExtResource("4_frokr")
 format = 2
-
-[node name="Decoration" type="Node2D" parent="NavigationRegion2D"]
-
-[node name="GroundGrass145" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(1836, 928)
-scale = Vector2(62.375, 36.5)
-texture = ExtResource("7_o4esy")
-
-[node name="ObstacleCorner" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(32, 32)
-texture = ExtResource("5_qujhc")
-flip_h = true
-flip_v = true
-
-[node name="ObstacleEdge" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(96, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge2" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(160, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge3" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(224, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge4" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(288, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge5" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(352, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge6" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(416, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge7" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(480, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge8" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(544, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge9" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(608, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge10" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(672, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge11" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(736, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge12" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(800, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge13" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(864, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge14" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(928, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge15" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(992, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleEdge16" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(1056, 32)
-texture = ExtResource("6_nluxb")
-flip_v = true
-
-[node name="ObstacleCorner2" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(1120, 32)
-texture = ExtResource("5_qujhc")
-flip_v = true
-
-[node name="ObstacleCorner3" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(32, 608)
-texture = ExtResource("5_qujhc")
-flip_h = true
-
-[node name="ObstacleEdge17" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(96, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge18" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(160, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge19" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(224, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge20" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(288, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge21" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(352, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge22" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(416, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge23" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(480, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge24" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(544, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge25" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(608, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge26" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(672, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge27" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(736, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge28" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(800, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge29" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(864, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge30" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(928, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge31" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(992, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleEdge32" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(1056, 608)
-texture = ExtResource("6_nluxb")
-
-[node name="ObstacleCorner4" type="Sprite2D" parent="NavigationRegion2D/Decoration"]
-position = Vector2(1120, 608)
-texture = ExtResource("5_qujhc")
 
 [node name="Grid" type="TileMap" parent="NavigationRegion2D"]
 position = Vector2(0, 25)
@@ -207,25 +70,12 @@ navigation_visibility_mode = 1
 format = 2
 
 [node name="SoldierCamera2D" type="Camera2D" parent="."]
+position = Vector2(120, 0)
 limit_left = 0
 limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
 limit_smoothed = true
 position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 script = ExtResource("8_8i6gb")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Control/CenterContainer"]
-layout_mode = 2
-text = "Turno 1 de 20"

@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="the-ruler"
+run/main_scene="res://scenes/battle/battle.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
 
 [input]
 
@@ -54,4 +61,3 @@ accept={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-textures/canvas_textures/default_texture_repeat=1
